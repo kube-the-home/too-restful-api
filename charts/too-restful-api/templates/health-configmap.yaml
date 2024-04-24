@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: heatlh-configmap
+  name: health-configmap
 data:
-  heatlh.json: |
+  health.json: |
     {
         "alive" : "true"
     }

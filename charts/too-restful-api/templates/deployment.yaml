@@ -63,7 +63,7 @@ spec:
           projected:
             sources:
             - configMap:
-                name: heatlh-configmap
+                name: health-configmap
             {{- range $value := .Values.additionalItems }}
             - configMap:
                 name: {{ $value }}
