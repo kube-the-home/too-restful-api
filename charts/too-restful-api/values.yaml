@@ -1,0 +1,56 @@
+image:
+  registry: docker.io
+  repository: lukashankeln/too-restful-api
+  tag: ~
+  pullPolicy: IfNotPresent
+
+application:
+  port: 8080
+  health:
+    enabled: true
+    path: "/items/heatlh.json"
+    initialDelaySeconds: 30
+    periodSeconds: 30
+  labels: {}
+
+additionalItems: []
+
+securityContext:
+  pod:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    seccompProfile:
+      type: RuntimeDefault
+  container:
+    runAsUser: 1000
+    runAsGroup: 1000
+    readOnlyRootFilesystem: true
+    runAsNonRoot: true
+    allowPrivilegeEscalation: false
+    capabilities:
+      drop:
+        - ALL
+
+
+resources: {}
+
+nodePort:
+  enabled: false
+  port: ~
+  labels: {}
+
+clusterip:
+  enabled: false
+  port: 8080
+  labels: {}
+
+ingress:
+  enabled: false
+  ingressClassName: "nginx"
+  host: ~
+  tls: []
+  labels: {}
+  annotations: {}
+
+env: {}

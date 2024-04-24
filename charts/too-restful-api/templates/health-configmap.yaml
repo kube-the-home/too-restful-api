@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: heatlh-configmap
+data:
+  heatlh.json: |
+    {
+        "alive" : "true"
+    }
