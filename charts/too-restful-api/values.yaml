@@ -8,7 +8,7 @@ application:
   port: 8080
   health:
     enabled: true
-    path: "/items/heatlh.json"
+    path: "/items/health.json"
     initialDelaySeconds: 30
     periodSeconds: 30
   labels: {}
