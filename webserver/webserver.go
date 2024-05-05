@@ -1,6 +1,7 @@
 package webserver
 
 import (
+	"encoding/json"
 	"errors"
 	"fmt"
 	"kube-the-home/too-restful-api/config"
@@ -45,6 +46,10 @@ func Init(files map[string][]byte) {
 		})
 	}
 
+	mux.HandleFunc("GET /list", func(w http.ResponseWriter, r *http.Request) {
+		list(w, r, files)
+	})
+
 	mux.HandleFunc("GET /metrics", func(w http.ResponseWriter, r *http.Request) {
 		metrics(w, r, files)
 	})
@@ -84,6 +89,31 @@ func metrics(w http.ResponseWriter, r *http.Request, files map[string][]byte) {
 
 	byteData := []byte(data)
 	_, err := w.Write(byteData)
+	if err != nil {
+		slog.Error("writing data", "error", err.Error())
+		http.Error(w, "Error writing data", http.StatusInternalServerError)
+		return
+	}
+
+}
+
+func list(w http.ResponseWriter, r *http.Request, files map[string][]byte) {
+	w.Header().Set("Content-Type", "application/json")
+
+	var keys []string
+	for k := range files { // Main code to get keys
+		keys = append(keys, k)
+	}
+
+	jsonString, err := json.Marshal(keys)
+
+	if err != nil {
+		slog.Error("parsing list data", "error", err.Error())
+		http.Error(w, "Error parsing list data", http.StatusInternalServerError)
+		return
+	}
+
+	_, err = w.Write(jsonString)
 	if err != nil {
 		slog.Error("writing data", "error", err.Error())
 		http.Error(w, "Error writing data", http.StatusInternalServerError)
