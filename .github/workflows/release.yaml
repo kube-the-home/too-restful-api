@@ -28,7 +28,7 @@ jobs:
 
       - name: Run Helm Docs
         run: helm-docs
-        
+
       - name: Install Helm
         uses: azure/setup-helm@v4
 
