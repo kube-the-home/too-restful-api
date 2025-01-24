@@ -5,5 +5,13 @@
     ],
     "reviewers": [
         "lukashankeln"
-    ]
+    ],
+    "packageRules": [
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "automerge": true
+    }
+  ],
 }
