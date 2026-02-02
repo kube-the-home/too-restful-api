@@ -8,7 +8,7 @@ WORKDIR /app
 
 RUN go build -ldflags '-s -w' -trimpath -o 'bin/' ./...
 
-FROM alpine:3.22.2
+FROM alpine:3.23.3
 
 COPY --from=builder /app/bin/too-restful-api /usr/local/bin/too-restful-api
 
