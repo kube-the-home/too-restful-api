@@ -1,17 +1,17 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [
-        "github>kube-the-home/renovate"
-    ],
-    "reviewers": [
-        "lukashankeln"
-    ],
-    "packageRules": [
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>kube-the-home/renovate"
+  ],
+  "reviewers": [
+    "lukashankeln"
+  ],
+  "packageRules": [
     {
       "matchManagers": [
         "github-actions"
       ],
       "automerge": true
     }
-  ],
+  ]
 }
