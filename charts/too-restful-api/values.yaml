@@ -1,6 +1,6 @@
 image:
-  registry: docker.io
-  repository: lukashankeln/too-restful-api
+  registry: ghcr.io
+  repository: kube-the-home/too-restful-api
   tag: ~
   pullPolicy: IfNotPresent
 

@@ -7,32 +7,46 @@ on:
 
 jobs:
   release:
-    # depending on default permission settings for your org (contents being read-only or read-write for workloads), you will have to add permissions
-    # see: https://docs.github.com/en/actions/security-guides/automatic-token-authentication#modifying-the-permissions-for-the-github_token
-    permissions:
-      contents: write
+    uses: kube-the-home/github-actions/.github/workflows/semantic-release.yaml@84c1860e25ca085e075b72749337455d6b3ed16c # v1.3.0
+    secrets:
+      APP_ID: ${{ secrets.RELEASE_APP_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PEM }}
+
+  docker:
+    needs: release
+    if: needs.release.outputs.new_version != ''
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: docker/login-action@af1e73f918a031802d376d3c8bbc3fe56130a9b0 # v4.4.0
         with:
-          fetch-depth: 0
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6.2.0
+        id: meta
+        with:
+          images: ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=${{ needs.release.outputs.new_version }}
+            type=raw,value=latest
+      - uses: docker/build-push-action@53b7df96c91f9c12dcc8a07bcb9ccacbed38856a # v7.3.0
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
-      - name: Install Helm Docs
-        uses: gabe565/setup-helm-docs-action@d5c35bdc9133cfbea3b671acadf50a29029e87c2 # v1
-
-      - name: Run Helm Docs
-        run: helm-docs
-
-      - name: Install Helm
-        uses: azure/setup-helm@dda3372f752e03dde6b3237bc9431cdc2f7a02a2 # v5
-
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f # v1.7.0
-        env:
-          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+  helm:
+    needs: release
+    if: needs.release.outputs.new_version != ''
+    uses: kube-the-home/github-actions/.github/workflows/helm-release.yaml@84c1860e25ca085e075b72749337455d6b3ed16c # v1.3.0
+    with:
+      chart_path: charts/too-restful-api
+      version: ${{ needs.release.outputs.new_version }}
+    secrets:
+      APP_ID: ${{ secrets.RELEASE_APP_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PEM }}
