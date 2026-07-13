@@ -35,11 +35,6 @@ securityContext:
 
 resources: {}
 
-nodePort:
-  enabled: false
-  port: ~
-  labels: {}
-
 clusterip:
   enabled: false
   port: 8080
@@ -52,5 +47,12 @@ ingress:
   tls: []
   labels: {}
   annotations: {}
+
+route:
+  enabled: false
+  annotations: {}
+  labels: {}
+  hostnames: []
+  parentRefs: []
 
 env: {}

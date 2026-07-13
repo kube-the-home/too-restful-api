@@ -4,7 +4,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $name }}-ingress
+  name: {{ $name }}
   {{- if .Values.ingress.labels }}
   labels:
     {{- toYaml .Values.ingress.labels | nindent 4 }}
@@ -24,7 +24,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ $name }}-clusterip
+                name: {{ $name }}
                 port:
                   number: {{ .Values.clusterip.port }}
   {{- if .Values.ingress.tls }}
