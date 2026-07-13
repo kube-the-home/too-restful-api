@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/kube-the-home/too-restful-api/compare/1.0.3...1.0.4) (2026-07-13)
+
+
+### Bug Fixes
+
+* do not set value labels as selector labels ([b55b7e5](https://github.com/kube-the-home/too-restful-api/commit/b55b7e54ffb3fb69de528f2c0b52ea3f6515e6ce))
+
 ## [1.0.3](https://github.com/kube-the-home/too-restful-api/compare/1.0.2...1.0.3) (2026-07-13)
 
 
