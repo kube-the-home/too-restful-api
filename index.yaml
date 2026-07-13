@@ -2,6 +2,15 @@ apiVersion: v1
 entries:
   too-restful-api:
   - apiVersion: v2
+    created: "2026-07-13T06:30:36.008000915Z"
+    description: A Helm Chart to deploy the TooRestFulApi
+    digest: 13c0c874a98fbce780a2216da725e253302a49a8a5ca8b2b30751813b282a17b
+    name: too-restful-api
+    type: application
+    urls:
+    - https://github.com/kube-the-home/too-restful-api/releases/download/too-restful-api-1.0.1/too-restful-api-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
     created: "2026-07-13T06:26:51.88253158Z"
     description: A Helm Chart to deploy the TooRestFulApi
     digest: 3ad8c0fca09cf6187c17f44cf88fc161f56b48b36a0ae5ae9870861d7221660d
@@ -73,4 +82,4 @@ entries:
     urls:
     - https://github.com/kube-the-home/too-restful-api/releases/download/too-restful-api-0.1.1/too-restful-api-0.1.1.tgz
     version: 0.1.1
-generated: "2026-07-13T06:26:51.882565413Z"
+generated: "2026-07-13T06:30:36.008019823Z"
