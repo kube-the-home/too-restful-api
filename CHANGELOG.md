@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/kube-the-home/too-restful-api/compare/1.0.0...1.0.1) (2026-07-13)
+
+
+### Bug Fixes
+
+* set default set of labels ([0078917](https://github.com/kube-the-home/too-restful-api/commit/00789174c1d94bb8b9bafb33831e8e414385de9c))
+
 # 1.0.0 (2026-07-13)
 
 
