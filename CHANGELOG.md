@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/kube-the-home/too-restful-api/compare/1.0.2...1.0.3) (2026-07-13)
+
+
+### Bug Fixes
+
+* use the right value for version ([ccc2ae7](https://github.com/kube-the-home/too-restful-api/commit/ccc2ae7abd71360a4b3b7e144d13b7c6c820d473))
+
 ## [1.0.2](https://github.com/kube-the-home/too-restful-api/compare/1.0.1...1.0.2) (2026-07-13)
 
 
