@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/kube-the-home/too-restful-api/compare/1.0.1...1.0.2) (2026-07-13)
+
+
+### Bug Fixes
+
+* enable clusterip service when route is active ([26fe762](https://github.com/kube-the-home/too-restful-api/commit/26fe7621486a5c42a5ae6fd2860b395dcb2428db))
+
 ## [1.0.1](https://github.com/kube-the-home/too-restful-api/compare/1.0.0...1.0.1) (2026-07-13)
 
 
