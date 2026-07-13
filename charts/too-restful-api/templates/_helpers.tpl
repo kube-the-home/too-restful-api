@@ -6,3 +6,12 @@ If release name contains chart name it will be used as a full name.
 {{- define "app.name" -}}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
 {{- end }}
+
+
+
+{{/*
+Compute the default labels to be set on all resources
+*/}}
+{{- define "app.labels" -}}
+app.kubernetes.io/version: {{ .Values.image.tag }}
+{{- end }}
