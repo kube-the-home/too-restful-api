@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/kube-the-home/too-restful-api/compare/1.0.5...1.0.6) (2026-08-06)
+
+
+### Bug Fixes
+
+* **deps:** update golang docker tag to v1.25.12 ([44c570d](https://github.com/kube-the-home/too-restful-api/commit/44c570db850fc42b3776cbd50dce29d94b2d9e67))
+
 ## [1.0.5](https://github.com/kube-the-home/too-restful-api/compare/1.0.4...1.0.5) (2026-08-06)
 
 
