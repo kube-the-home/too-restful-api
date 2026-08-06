@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/kube-the-home/too-restful-api/compare/1.0.4...1.0.5) (2026-08-06)
+
+
+### Bug Fixes
+
+* **deps:** update alpine docker tag to v3.22.5 ([52ed49d](https://github.com/kube-the-home/too-restful-api/commit/52ed49da839aca6e483ccc3bcb11f8d69354639b))
+
 ## [1.0.4](https://github.com/kube-the-home/too-restful-api/compare/1.0.3...1.0.4) (2026-07-13)
 
 
